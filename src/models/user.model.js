@@ -57,10 +57,12 @@ userSchema.pre("save", async function (next) {
     this.password = bcrypt.hash(this.password, 10)
     next()
 })
+
 //compairing password !
 userSchema.methods.isPasswordCorrect = async function(password){
    return await bcrypt.compare(password, this.password)
 }
+
 
 userSchema.method.genrateAccessToken = function(){
     return Jwt.sign(
@@ -76,6 +78,7 @@ userSchema.method.genrateAccessToken = function(){
         }
     )
 }
+
 userSchema.method.genrateRefreshToken = function(){
     return Jwt.sign(
         {
