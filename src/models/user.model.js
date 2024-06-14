@@ -5,6 +5,12 @@ import Jwt from "jsonwebtoken";
 
 const userSchema = new Schema(
     {
+        fullName: {
+            type: String,
+            requried: true,
+            trim: true,
+            index: true
+        },
     username: {
         type: String,
         requried: true,
@@ -19,12 +25,6 @@ const userSchema = new Schema(
         unique: true,
         lowercase: true,
         trim: true,
-    },
-    fullName: {
-        type: String,
-        requried: true,
-        trim: true,
-        index: true
     },
     avatar: {
         type: String, //Cloudinary url
